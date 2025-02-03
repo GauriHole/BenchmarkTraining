@@ -18,8 +18,9 @@
   - **For each task:**  
     - **Call** `createTodo(task)` **to display it in the list**.
 <p align="center">
-  <img src="![3](https://github.com/user-attachments/assets/839b04bf-10bf-423b-9c70-d2fff37f5345)" alt="Description" style="width:50%;">
+  <img src="https://github.com/user-attachments/assets/839b04bf-10bf-423b-9c70-d2fff37f5345" alt="Description" style="width:50%;">
 </p>
+
 
 **5. Add Task Button Click Event (`buttonTodo`)**  
 - **User clicks** **Add** **button.**  
@@ -31,7 +32,7 @@
   - **No:**  
     - **Do nothing.**
 <p align="center">
-  <img src="![1](https://github.com/user-attachments/assets/2d0359fc-13f2-4f54-bf88-154c7bea4ab4)" alt="Description" style="width:50%;">
+  <img src="https://github.com/user-attachments/assets/2d0359fc-13f2-4f54-bf88-154c7bea4ab4" alt="Description" style="width:50%;">
 </p>
 
 **6. Create Todo Function (`createTodo(task)`)**  
@@ -58,7 +59,7 @@
       - **Remove** `editing` **class from** `li`.  
       - **Call** `saveAllTodo()`.
 <p align="center">
-  <img src="![2](https://github.com/user-attachments/assets/45c0878e-55b5-45d8-ba2e-d0f11eabfb3b)" alt="Description" style="width:50%;">
+  <img src="https://github.com/user-attachments/assets/45c0878e-55b5-45d8-ba2e-d0f11eabfb3b" alt="Description" style="width:50%;">
 </p>
 
 **8. Delete All Button Click Event (`deleteAllButton`)**  
@@ -67,7 +68,7 @@
     - **Clear all tasks from** `ulTodo`.  
     - **Remove** `allTodos` **from** `localStorage`.
 <p align="center">
-  <img src="![4](https://github.com/user-attachments/assets/554bf157-5951-42da-bcb7-b670398ed86c)" alt="Description" style="width:50%;">
+  <img src="https://github.com/user-attachments/assets/554bf157-5951-42da-bcb7-b670398ed86c" alt="Description" style="width:50%;">
 </p>
 
 **9. Save All Todos Function (`saveAllTodo()`)**  
@@ -75,6 +76,6 @@
 - **Convert them to an array of text.**  
 - **Save the array to** `localStorage`.
 <p align="center">
-  <img src="![5](https://github.com/user-attachments/assets/31ccc111-4e65-4666-aec4-1c82fac36e08)" alt="Description" style="width:50%;">
+  <img src="https://github.com/user-attachments/assets/31ccc111-4e65-4666-aec4-1c82fac36e08" alt="Description" style="width:50%;">
 </p>
 
