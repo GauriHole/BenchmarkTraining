@@ -1,59 +1,58 @@
-### **Flowchart Structure**
+** Steps to be Followed ↕️ **
+__1. Start__
 
-1. **Start**
-
-2. **DOMContentLoaded Event Listener**
+__2. DOMContentLoaded Event Listener__
    - Event: Wait for the document to fully load.
 
-3. **Initialize Variables**
+__3. Initialize Variables__
    - Get references to input, buttons, and the task list (`inputTodo`, `buttonTodo`, `ulTodo`, `deleteAllButton`).
 
-4. **Load Saved Tasks**
-   - **Call `loadAllTodo()`**
+__4. Load Saved Tasks__
+   - Call `loadAllTodo()`
      - Retrieve tasks from `localStorage`.
      - For each task, **Call `createTodo(task)`** to display it in the list.
 
-5. **Add Task Button Click Event (`buttonTodo`)**
+__5. Add Task Button Click Event (`buttonTodo`)__
    - User clicks **Add** button.
-   - **Check if input is not empty**:
-     - **Yes**:
-       - **Call `createTodo(input value)`** to add task to the list.
+   - Check if input is not empty**:
+     - __Yes:__
+       - Call `createTodo(input value)` to add task to the list.
        - Clear the input field.
-       - **Call `saveAllTodo()`** to save tasks to `localStorage`.
-     - **No**:
+       - Call `saveAllTodo()` to save tasks to `localStorage`.
+     - __No:__
        - Do nothing.
 
-6. **Create Todo Function (`createTodo(task)`)**
+__6. Create Todo Function (`createTodo(task)`)__
    - Create a new list item (`li`) with:
      - Task text.
      - **Edit** and **Delete** buttons.
    - Append the new item to `ulTodo`.
 
-7. **Event Delegation on Todo List (`ulTodo.click`)**
-   - **If Delete Button Clicked**:
+__7. Event Delegation on Todo List (`ulTodo.click`)__
+   - If Delete Button Clicked:
      - Remove the corresponding task (`li`).
-     - **Call `saveAllTodo()`**.
+     - Call `saveAllTodo()`.
    
-   - **If Edit Button Clicked**:
-     - **If not in editing mode**:
+   - If Edit Button Clicked:
+     - If not in editing mode:
        - Replace task text with an input box.
        - Change button text to **Save**.
        - Add `editing` class to `li`.
-     - **If in editing mode (Save clicked)**:
+     - If in editing mode (Save clicked):
        - Get updated input value.
-       - **If not empty**:
+       - If not empty:
          - Replace input with updated task text.
          - Change button text back to **Edit**.
          - Remove `editing` class from `li`.
-         - **Call `saveAllTodo()`**.
+         - Call `saveAllTodo()`.
 
-8. **Delete All Button Click Event (`deleteAllButton`)**
+__8. Delete All Button Click Event (`deleteAllButton`)__
    - On click, show confirmation dialog:
      - **If confirmed**:
        - Clear all tasks from `ulTodo`.
        - Remove `allTodos` from `localStorage`.
 
-9. **Save All Todos Function (`saveAllTodo()`)**
+__9. Save All Todos Function (`saveAllTodo()`)__
    - Get all current tasks from the DOM.
    - Convert them to an array of text.
    - Save the array to `localStorage`.
