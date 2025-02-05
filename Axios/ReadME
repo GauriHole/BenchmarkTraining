@@ -1,6 +1,4 @@
-# Axios in JavaScript
-<img src="https://images.seeklogo.com/logo-png/42/1/axios-logo-png_seeklogo-428046.png" width="200px" height="200px"> </img>
-
+# Axios in JavaScript:
 Axios is a **promise-based HTTP client** for JavaScript, used to make requests to servers for sending or receiving data. It works both in the browser and in Node.js.
 
 ## Common Axios Methods
