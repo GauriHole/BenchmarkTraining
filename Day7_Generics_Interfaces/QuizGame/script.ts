@@ -1,4 +1,4 @@
-// Define the Question Interface
+// Question Interface
 interface Question {
     question: string;
     choices: string[];
@@ -17,7 +17,6 @@ class Quiz {
         this.score = 0;
     }
 
-    // Display the current question
     displayQuestion(): void {
         const currentQuestion = this.questions[this.currentQuestionIndex];
         const questionText = document.querySelector('.question-text') as HTMLElement;
@@ -34,7 +33,6 @@ class Quiz {
         });
     }
 
-    // Check the user's answer
     checkAnswer(selectedAnswer: string): void {
         const currentQuestion = this.questions[this.currentQuestionIndex];
         if (selectedAnswer === currentQuestion.correctAnswer) {
@@ -46,7 +44,6 @@ class Quiz {
         nextBtn.style.display = 'block';
     }
 
-    // Move to the next question or display the final score
     nextQuestion(): void {
         const nextBtn = document.querySelector('.next-btn') as HTMLElement;
         nextBtn.style.display = 'none';
@@ -58,7 +55,6 @@ class Quiz {
         }
     }
 
-    // Display the final score
     displayScore(): void {
         const scoreContainer = document.querySelector('.score') as HTMLElement;
         scoreContainer.textContent = `Your Score: ${this.score} / ${this.questions.length}`;
@@ -66,7 +62,6 @@ class Quiz {
     }
 }
 
-// Sample Questions
 const questions: Question[] = [
     {
         question: 'What is the capital of France?',
@@ -85,10 +80,8 @@ const questions: Question[] = [
     }
 ];
 
-// Initialize Quiz
 const quiz = new Quiz(questions);
 quiz.displayQuestion();
 
-// Event Listener for Next Button
 const nextBtn = document.querySelector('.next-btn') as HTMLElement;
 nextBtn.addEventListener('click', () => quiz.nextQuestion());
