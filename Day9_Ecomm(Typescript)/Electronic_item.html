@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Easy Basket</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .page-title {
+        text-align: center;
+        font-size: 24px;
+        margin: 20px 0;
+        font-weight: bold;
+      }
+
+      .renderElectronics {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar-container">
+      <div class="navbar" style="width: 100%">
+        <div class="logo">
+          <img src="logo.png" alt="Logo" />
+        </div>
+        <div class="menu">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Mens_Fashion.html">Men's Fashion</a></li>
+            <li><a href="Jewelary.html">Jewelery Collection</a></li>
+            <li><a href="#">Electronics</a></li>
+          </ul>
+        </div>
+        <div class="cart-icon"></div>
+      </div>
+    </div>
+
+    <h1 class="page-title">Electronics Product</h1>
+    <div class="main-container">
+      <div class="renderElectronics"></div>
+    </div>
+
+    <script src="electronic.js"></script>
+  </body>
+</html>

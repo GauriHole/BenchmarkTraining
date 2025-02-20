@@ -1,0 +1,30 @@
+# Object-Oriented Programming Systems in JavaScript 🚀
+This repository demonstrates key Object-Oriented Programming (OOP) principles :
+- **Inheritance**: Reusing and extending existing classes.
+- **Polymorphism**: Overriding methods to provide specific functionality.
+- **Abstraction**: Hiding sensitive details and exposing only necessary data.
+
+through three practical systems:
+1. **Employee Management System**
+2. **Vehicle Rental System**
+3. **Online Payment System**
+
+## 1. Employee Management System
+
+The Employee Management System models different types of employees with role-specific bonus calculations.
+- **Inheritance**: `Manager`, `Engineer`, and `Intern` classes inherit from the `Employee` class.
+- **Polymorphism**: Each subclass overrides the `calculateBonus()` method to provide role-specific bonus calculations.
+
+## 2. Vehicle Rental System
+
+The Vehicle Rental System calculates rental costs for different types of vehicles, each with unique pricing logic.
+- **Inheritance**: `Car`, `Bike`, and `Truck` classes inherit from the `Vehicle` class.
+- **Polymorphism**: The `calculateRentalCost(days)` method is overridden in each subclass to adjust the cost calculation based on the vehicle type.
+
+## 3. Online Payment System
+
+The Online Payment System handles various payment methods while safeguarding sensitive information.
+- **Inheritance**: `CreditCardPayment`, `PayPalPayment`, and `CryptoPayment` classes inherit from the `Payment` class.
+- **Abstraction**: Sensitive details like `#cardNumber` are hidden using private fields in `CreditCardPayment`, ensuring encapsulation and data security.
+
+ 
