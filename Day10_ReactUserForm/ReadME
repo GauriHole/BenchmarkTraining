@@ -1,0 +1,13 @@
+React Form with State Management
+🚀 About This Project
+This is a simple React form that captures user details like name, age, gender, skills, and mobile number using the useState hook. The entered details are displayed dynamically on the screen.
+
+✨ Features
+✔️ Input fields for First Name, Last Name, Age, Gender, Skills, and Mobile Number
+✔️ Radio buttons for gender selection
+✔️ Dropdown menu for selecting a skill
+✔️ Displays user input in real time
+✔️ Form submission with an alert message
+
+📷 Screenshot
+Added an screenshot of FormData Output.i.e.(ReactFormSnap.png)

@@ -1,0 +1,11 @@
+React GET & POST API Example
+
+📌 Features
+- Fetch post details using a *GET request*.
+- Create a new post using a *POST request*.
+- Uses **Axios** for API calls and *JSONPlaceholder API* for testing.
+
+🛠 Technologies Used
+- React (useState for state management)
+- Axios (for API requests)
+- JSONPlaceholder API (mock API for testing)
