@@ -4,7 +4,6 @@ import "../App.css";
 
 const Cart: React.FC = () => {
   const { cart, removeFromCart } = useCart();
-
   return (
     <div className="cart-container">
       <h2>Your Cart</h2>

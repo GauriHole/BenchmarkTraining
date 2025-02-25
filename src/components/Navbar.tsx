@@ -5,7 +5,6 @@ import "../App.css";
 
 const Navbar: React.FC = () => {
   const { cart } = useCart();
-
   return (
     <nav className="navbar">
       <h2>🛒 Shop-Easy </h2>

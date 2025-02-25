@@ -5,7 +5,6 @@ interface Product {
   price: number;
   image: string;
 }
-
 interface CartContextType {
   cart: Product[];
   addToCart: (product: Product) => void;

@@ -36,7 +36,7 @@ const Login = () => {
       placeholder="Enter Password "
       onChange={(e) => setPassword(e.target.value)} 
       autoComplete="new-password" 
-/>
+  />
       {error && <p className="error-message">{error}</p>}
       <button className="login-btn" onClick={handleLogin}>
         Login

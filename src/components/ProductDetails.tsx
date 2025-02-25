@@ -20,7 +20,7 @@ const ProductDetails = () => {
   if (isLoading) return <h3>Loading Product Details...</h3>;
   if (isError) return <h3>Error loading product details.</h3>;
 
-  return (
+ return (
     <div className="product-details">
       <center>
         <div className="card" style={{ height: 550 }}>
