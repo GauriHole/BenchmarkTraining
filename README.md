@@ -1,50 +1,67 @@
-# React + TypeScript + Vite
+# ShopEasy - E-Commerce Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Project Overview
+ShopEasy is a simple e-commerce website built with **React, TypeScript, React Query, and React Router**. It fetches product data from an API and allows users to view product details and add items to a shopping cart.
 
-Currently, two official plugins are available:
+## 🚀 Features
+- **Home Page**: Displays all products.
+- **Product Listing**: Fetches and displays products from FakeStore API.
+- **Product Details Page**: Shows detailed information about a product when clicked.
+- **Shopping Cart**: Allows users to add items to the cart.
+- **Navigation**: Includes links to Home, About, and different product categories.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Technologies Used
+- **React** (for UI)
+- **TypeScript** (for type safety)
+- **React Router** (for navigation)
+- **React Query** (for API calls & data fetching)
+- **Axios** (for making API requests)
+- **CSS** (for styling)
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 📂 Folder Structure
+```
+ShopEasy/
+│── src/
+│   ├── components/
+│   │   ├── Navbar.tsx
+│   │   ├── Footer.tsx
+│   ├── pages/
+│   │   ├── Home.tsx
+│   │   ├── ProductDetails.tsx
+│   ├── context/
+│   │   ├── CartContext.tsx
+│   ├── App.tsx
+│   ├── main.tsx
+│── public/
+│── package.json
+│── README.md
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 📦 Installation & Setup
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+### **1️⃣ Clone the Repository**
+```sh
+git clone https://github.com/your-username/ShopEasy.git
+cd ShopEasy
 ```
+
+### **2️⃣ Install Dependencies**
+```sh
+npm install
+```
+
+### **3️⃣ Start the Development Server**
+```sh
+npm run dev
+```
+> Open `http://localhost:5173/` in your browser (for Vite-based projects)
+
+
+## 🔗 API Used
+- [FakeStore API](https://fakestoreapi.com/) - Used to fetch product details.
+
+## 📜 How It Works
+1. **Home Page (`/`)**: Displays all products.
+2. **Product Details (`/product/:id`)**: Clicking on a product shows details fetched via `useQuery`.
+3. **Cart**: Users can add products to their cart.
+4. **Navigation**: Provides links to different pages.
