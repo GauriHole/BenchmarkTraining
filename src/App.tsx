@@ -8,6 +8,8 @@ import { AuthProvider } from "./context/AuthContext";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Cart from "./pages/Cart";
+import AddProduct from "./pages/AddProduct";
+import EditProduct from "./pages/EditProduct";
 import Login from "./pages/Login";
 
 const App: React.FC = () => {
@@ -21,6 +23,8 @@ const App: React.FC = () => {
           <Route path="/about" element={<About />} />
           <Route path="/product" element={<Product />} />
           <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/add-product" element={<AddProduct />} />
+          <Route path="/edit-product/:id" element={<EditProduct />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />
         </Routes>
