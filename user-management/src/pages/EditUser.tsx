@@ -13,6 +13,7 @@ const EditUser = ({ visible, onClose, userId }: EditUserProps) => {
   const user = users.find((u) => u.id === userId);
 
   const [formData, setFormData] = useState({ first_name: "", email: "" });
+  const [emailError, setEmailError] = useState<string | null>(null);
 
   useEffect(() => {
     if (user) {
@@ -20,9 +21,31 @@ const EditUser = ({ visible, onClose, userId }: EditUserProps) => {
     }
   }, [user]);
 
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const email = e.target.value;
+    setFormData({ ...formData, email });
+
+    if (!validateEmail(email)) {
+      setEmailError("❌ Please enter a valid email address.");
+    } else {
+      setEmailError(null);
+    }
+  };
+
   const handleSave = () => {
     if (!userId) return;
+    
+    if (emailError) {
+      message.error("Invalid email. Please enter a valid email.");
+      return;
+    }
 
+    console.log("Updating User:", userId, formData);
     updateUser(userId, formData);
     message.success("User updated successfully!");
     onClose();
@@ -35,13 +58,21 @@ const EditUser = ({ visible, onClose, userId }: EditUserProps) => {
         value={formData.first_name}
         onChange={(e) => setFormData({ ...formData, first_name: e.target.value })}
       />
+      
       <Input
         placeholder="Email"
         value={formData.email}
-        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+        onChange={handleEmailChange}
         style={{ marginTop: 10 }}
       />
-      <Button type="primary" onClick={handleSave} style={{ marginTop: 15 }}>
+      {emailError && <p style={{ color: "red", fontSize: "12px" }}>{emailError}</p>}
+
+      <Button 
+        type="primary" 
+        onClick={handleSave} 
+        style={{ marginTop: 15 }} 
+        disabled={!!emailError} 
+      >
         Save Changes
       </Button>
     </Modal>

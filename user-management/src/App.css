@@ -40,3 +40,51 @@
 .read-the-docs {
   color: #888;
 }
+.light-mode {
+  background-color: white;
+  color: black;
+}
+.dark-mode {
+  background-color: #121212;
+  color: white;
+}
+:root[data-theme="light"] {
+  --background-color: white;
+  --text-color: black;
+  --navbar-bg: #f8f9fa;
+  --button-bg: #1890ff;
+  --button-text: white;
+}
+
+:root[data-theme="dark"] {
+  --background-color: #121212;
+  --text-color: white;
+  --navbar-bg: #333;
+  --button-bg: #ffcc00;
+  --button-text: black;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background: var(--navbar-bg);
+}
+
+button {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}

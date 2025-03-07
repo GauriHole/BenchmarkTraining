@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { useUserStore } from "./userStore"; 
 
 interface AuthState {
   isAdmin: boolean;
@@ -15,5 +16,8 @@ export const useAuthStore = create<AuthState>((set) => ({
     }
     return false;
   },
-  logout: () => set({ isAdmin: false }),
+  logout: () => {
+    set({ isAdmin: false });
+    useUserStore.getState().clearUsers(); 
+  },
 }));

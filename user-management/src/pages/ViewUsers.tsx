@@ -1,33 +1,18 @@
-import { Table, Input, Button, message, Pagination } from "antd";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Table, Button, message, Pagination } from "antd";
 import { useUserStore } from "../store/userStore";
-import EditUser from "../pages/EditUser"; // Import the modal
-
-const fetchUsers = async (page: number) => {
-  const { data } = await axios.get("https://reqres.in/api/users", {
-    params: { page, per_page: 6 },
-  });
-  return data.data;
-};
+import EditUser from "../pages/EditUser"; 
 
 const ViewUsers = () => {
-  const [page, setPage] = useState(1);
-  const { data: users, isLoading, error } = useQuery({
-    queryKey: ["users", page],
-    queryFn: () => fetchUsers(page),
-  });
-
-  const { users: storedUsers, setUsers, deleteUser } = useUserStore();
-  const [editModalVisible, setEditModalVisible] = useState(false);
-  const [selectedUserId, setSelectedUserId] = useState<number | null>(null);
+  const { users: storedUsers, fetchUsers, deleteUser } = useUserStore(); 
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 6;
+  const [editingUserId, setEditingUserId] = useState<number | null>(null);
+  const [isEditModalVisible, setEditModalVisible] = useState(false);
 
   useEffect(() => {
-    if (users) {
-      setUsers(users);
-    }
-  }, [users, setUsers]);
+    fetchUsers(); 
+  }, []);
 
   const handleDelete = (id: number) => {
     deleteUser(id);
@@ -35,37 +20,27 @@ const ViewUsers = () => {
   };
 
   const handleEdit = (id: number) => {
-    setSelectedUserId(id);
+    setEditingUserId(id);
     setEditModalVisible(true);
   };
 
-  if (error) return <p>Error fetching users</p>;
+  const paginatedUsers = storedUsers.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
   return (
     <div>
       <h2>Users</h2>
-      <Input.Search
-        placeholder="Search by Name or Email"
-        onChange={(e) =>
-          setUsers(
-            users?.filter(
-              (user) =>
-                user.first_name
-                  .toLowerCase()
-                  .includes(e.target.value.toLowerCase()) ||
-                user.email.toLowerCase().includes(e.target.value.toLowerCase())
-            ) || []
-          )
-        }
-        style={{ marginBottom: 10 }}
-      />
       <Table
-        loading={isLoading}
-        dataSource={storedUsers.map((user) => ({ ...user, key: user.id }))}
+        dataSource={paginatedUsers.map((user) => ({
+          ...user,
+          key: user.id,
+        }))}
+        pagination={false}
         columns={[
           { title: "ID", dataIndex: "id", key: "id" },
-          { title: "Name", dataIndex: "first_name", key: "name" },
+          { title: "First Name", dataIndex: "first_name", key: "first_name" },
+          { title: "Last Name", dataIndex: "last_name", key: "last_name" },
           { title: "Email", dataIndex: "email", key: "email" },
+          { title: "Avatar", dataIndex: "avatar", key: "avatar", render: (avatar) => <img src={avatar} alt="Avatar" width="40" /> },
           {
             title: "Actions",
             key: "actions",
@@ -78,13 +53,19 @@ const ViewUsers = () => {
           },
         ]}
       />
-      <Pagination current={page} onChange={setPage} total={12} pageSize={6} />
 
-      {/* Edit User Modal */}
+      <Pagination
+        current={currentPage}
+        pageSize={pageSize}
+        total={storedUsers.length}
+        onChange={(page) => setCurrentPage(page)}
+        style={{ marginTop: 20, textAlign: "center" }}
+      />
+
       <EditUser
-        visible={editModalVisible}
+        visible={isEditModalVisible}
         onClose={() => setEditModalVisible(false)}
-        userId={selectedUserId}
+        userId={editingUserId}
       />
     </div>
   );

@@ -1,42 +1,82 @@
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import { Input, Button, message } from "antd";
 import { useUserStore } from "../store/userStore";
 import { useNavigate } from "react-router-dom";
 
 interface UserForm {
   first_name: string;
+  last_name: string;
   email: string;
 }
 
 const AddUser = () => {
-  const { register, handleSubmit, reset } = useForm<UserForm>();
-  const addUser = useUserStore((state) => state.addUser);
+  const { register, handleSubmit, reset, formState: { errors, isValid } } = useForm<UserForm>({
+    mode: "onChange",
+  });
+
+  const { addUser, users } = useUserStore(); // ✅ Extract addUser from Zustand
   const navigate = useNavigate();
 
-  const onSubmit = async (data: UserForm) => {
-    try {
-      const res = await axios.post("https://reqres.in/api/users", data);
+  const onSubmit = (data: UserForm) => {
+    const newUser = {
+      id: users.length + 1, // ✅ Ensure unique ID
+      first_name: data.first_name,
+      last_name: data.last_name,
+      email: data.email,
+      avatar: "🧑",
+    };
 
-      // ✅ Ensure Zustand state is updated immediately
-      addUser({ id: res.data.id || Math.floor(Math.random() * 1000), ...data });
+    console.log("✅ Zustand - Adding User:", newUser);
+    addUser(newUser); // ✅ Add user to Zustand
+    message.success("User added successfully!");
 
-      message.success("User added successfully!");
-      reset(); // ✅ Clears the form after submission
-      navigate("/"); // ✅ Redirects to View Users page
-    } catch (error) {
-      console.error("Error adding user:", error);
-      message.error("Failed to add user!");
-    }
+    reset();
+
+    setTimeout(() => {
+      navigate("/");
+    }, 500);
   };
 
   return (
     <div>
       <h2>Add New User</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Input placeholder="Name" {...register("first_name", { required: true })} />
-        <Input placeholder="Email" {...register("email", { required: true })} style={{ marginTop: 10 }} />
-        <Button type="primary" htmlType="submit" style={{ marginTop: 10 }}>Add User</Button>
+        <div>
+          <label>First Name:</label>
+          <Input
+            {...register("first_name", {
+              required: "First name is required",
+              pattern: { value: /^[A-Za-z\s]+$/, message: "Only letters allowed" },
+            })}
+          />
+          {errors.first_name && <p style={{ color: "red" }}>{errors.first_name.message}</p>}
+        </div>
+
+        <div>
+          <label>Last Name:</label>
+          <Input
+            {...register("last_name", {
+              required: "Last name is required",
+              pattern: { value: /^[A-Za-z\s]+$/, message: "Only letters allowed" },
+            })}
+          />
+          {errors.last_name && <p style={{ color: "red" }}>{errors.last_name.message}</p>}
+        </div>
+
+        <div>
+          <label>Email:</label>
+          <Input
+            {...register("email", {
+              required: "Email is required",
+              pattern: { value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, message: "Invalid email" },
+            })}
+          />
+          {errors.email && <p style={{ color: "red" }}>{errors.email.message}</p>}
+        </div>
+
+        <Button type="primary" htmlType="submit" disabled={!isValid} style={{ marginTop: 10 }}>
+          Add User
+        </Button>
       </form>
     </div>
   );
