@@ -1,4 +1,4 @@
-## **Step-by-Step Implementation 🚀 **
+## Step-by-Step Implementation 🚀 
 
 ### **Step 1: Project Setup**
 1. Create a new **Vite + React** project:
