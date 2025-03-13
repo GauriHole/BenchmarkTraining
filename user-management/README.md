@@ -26,9 +26,11 @@
 2. Use `react-hook-form` for validation.
 3. Call the **ReqRes API** (`POST /login`) when the form is submitted.
 4. Store authentication status using **Zustand**.
-5. Redirect to the dashboard on successful login.
-6. Show error messages for incorrect credentials.
-
+5. Credentials for Admin:
+Username: admin
+Password: admin123
+6. Redirect to the dashboard on successful login.
+7. Show error messages for incorrect credentials.
 ---
 
 ### **Step 3: Dashboard with User Management**
