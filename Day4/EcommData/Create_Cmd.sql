@@ -1,0 +1,18 @@
+CREATE TABLE CustomerInfo (
+    CustID INT PRIMARY KEY,
+    CustName VARCHAR(100),
+    Email VARCHAR(100) UNIQUE
+);
+
+CREATE TABLE ProdDetails (
+    ProdID INT PRIMARY KEY,
+    ProdName VARCHAR(255) UNIQUE,
+    Price DECIMAL(10,2)
+);
+
+CREATE TABLE OrderInfo (
+    OrderID INT PRIMARY KEY,
+    CustID INT,
+    OrderDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (CustID) REFERENCES CustomerInfo(CustID)
+);

@@ -1,0 +1,26 @@
+album_id,title,artist_id,release_year
+1,"Aashiqui 2",1,2013
+2,"Ae Dil Hai Mushkil",2,2016
+3,Tamasha,3,2015
+4,"Kal Ho Naa Ho",4,2003
+5,"Kabir Singh",5,2019
+6,Shershaah,NULL,NULL
+7,Brahmastra,NULL,NULL
+8,Animal,NULL,NULL
+9,"Half Girlfriend",NULL,NULL
+10,Raees,NULL,NULL
+11,"Zindagi Na Milegi Dobara",NULL,NULL
+12,"Ajab Prem Ki Ghazab Kahani",NULL,NULL
+13,Iqbal,NULL,NULL
+14,War,NULL,NULL
+15,Drive,NULL,NULL
+16,"Patiala House",16,2011
+17,Maari,17,2015
+18,Sairat,18,2016
+19,"OK Kanmani",19,2015
+20,3,20,2012
+21,"Sonu Ke Titu Ki Sweety",21,2018
+22,Master,22,2021
+23,Lollipop,23,2010
+24,Haider,24,2014
+25,Rangabati,25,2017
